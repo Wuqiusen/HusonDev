@@ -3,4 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="tv_gray_color">#999999</color>
+    <color name="edt_login_color">#CCCCCC</color>
+    <color name="btn_clicked">#FF7F27</color>
+    <color name="btn_noclicked">#FFA726</color>
+    <color name="background_gray">#e4e4e4</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="btn_update_noclicked">#2BAF2B</color>
+    <color name="btn_update_clicked">#00BA00</color>
+    <color name="btn_ok_isclicked">#FF5722</color>
+    <color name="btn_ok_noclicked">#FF7043</color>
 </resources>

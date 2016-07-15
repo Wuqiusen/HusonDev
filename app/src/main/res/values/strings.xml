@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HusonDevAndroid</string>
+    <string name="camera_open_error">启动相机失败</string>
+    <string name="not_specify_a_directory">未指定存储目录</string>
 </resources>

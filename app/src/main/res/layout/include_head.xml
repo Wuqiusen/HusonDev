@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_base_headArea"
+    android:layout_width="match_parent"
+    android:layout_height="49dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/colorPrimary">
+
+    <Button
+        android:id="@+id/btn_base_head_back"
+        android:layout_width="60dp"
+        android:minWidth="30dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableLeft="@mipmap/fanhui"
+        android:gravity="center_vertical"
+        android:layout_marginTop="12dp"
+        android:textSize="@dimen/font_medium"
+        android:paddingLeft="16dp"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:id="@+id/tv_base_head_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/app_name"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textSize="@dimen/font_huge"
+        android:textColor="@color/white" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2px"
+        android:background="@color/background_gray"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
+
