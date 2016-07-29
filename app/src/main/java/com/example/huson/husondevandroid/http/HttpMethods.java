@@ -2,6 +2,8 @@ package com.example.huson.husondevandroid.http;
 
 
 import com.example.huson.husondevandroid.bean.BaseBean;
+import com.example.huson.husondevandroid.bean.WeatherinfoBean;
+import com.example.huson.husondevandroid.mvp.modle.MainModel;
 import com.example.huson.husondevandroid.utils.DebugLog;
 
 import org.json.JSONArray;
@@ -96,6 +98,13 @@ public class HttpMethods {
         HttpInterfaces.ReportSave reportSaveService = retrofit.create(HttpInterfaces.ReportSave.class);
         Observable observable = reportSaveService.reportSave(code, KeyCode, lineName, accidenDate,
                 accidentTime, driverName,vehiceCode,geogName,accidentPlace,dutyType,injuredNumber, deadNumber, list)
+                .map(new HttpResultFunc());
+        toSubscribe(observable, subscriber);
+    }
+
+    public void loadData(Subscriber<WeatherinfoBean> subscriber, String city){
+        HttpInterfaces.LoadData loadData = retrofit.create(HttpInterfaces.LoadData.class);
+        Observable observable = loadData.loadData(city)
                 .map(new HttpResultFunc());
         toSubscribe(observable, subscriber);
     }

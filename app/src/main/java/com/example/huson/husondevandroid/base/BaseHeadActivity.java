@@ -16,7 +16,6 @@ public abstract class BaseHeadActivity extends BaseActivity {
 
     protected RelativeLayout rel_contentArea;
     private RelativeLayout rel_base_headArea;
-    private Button btn_headRightButton;
     private Button btn_backButton;
     private TextView btn_headTitle;
 
@@ -33,10 +32,8 @@ public abstract class BaseHeadActivity extends BaseActivity {
         rel_base_headArea = (RelativeLayout) findViewById(R.id.rel_base_headArea);
         btn_backButton = (Button) findViewById(R.id.btn_base_head_back);
         btn_headTitle = (TextView) findViewById(R.id.tv_base_head_title);
-        btn_headRightButton = (Button) findViewById(R.id.btn_base_head_right);
         btn_backButton.setVisibility(View.GONE);
         btn_headTitle.setVisibility(View.GONE);
-        btn_headRightButton.setVisibility(View.GONE);
     }
 
     @Override
@@ -88,10 +85,6 @@ public abstract class BaseHeadActivity extends BaseActivity {
         btn_headTitle.setVisibility(View.GONE);
     }
 
-    public void showRightButton(View.OnClickListener listener){
-        btn_headRightButton.setOnClickListener(listener);
-        btn_headRightButton.setVisibility(View.VISIBLE);
-    }
 
     public boolean checkIsEmpty(String str, String toast){
         if (TextUtils.isEmpty(str)) {

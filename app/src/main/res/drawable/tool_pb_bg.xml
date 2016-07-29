@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar_bg_bmp"
+    android:src="@mipmap/pb_ebus_tag"
+    android:tileMode="disabled" android:gravity="center" >
+</bitmap>

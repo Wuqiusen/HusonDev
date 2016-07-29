@@ -25,15 +25,11 @@ public abstract class BaseHeadFragment extends BaseFragment {
     private RelativeLayout rel_contentArea;
     private Button btn_backButton;
     private RelativeLayout rel_headArea;
-    private Button btn_headRightButton;
     private TextView btn_headTitle;
 
     private int curr_menu_index = -1;
 
 
-    public Button getHeadRightButton() {
-        return btn_headRightButton;
-    }
 
 
     public BaseHeadFragment() {
@@ -70,21 +66,14 @@ public abstract class BaseHeadFragment extends BaseFragment {
         btn_headTitle.setVisibility(View.VISIBLE);
     }
 
-    public void showHeadRightButton(String text, OnClickListener listener) {
-        btn_headRightButton.setText(text);
-        btn_headRightButton.setOnClickListener(listener);
-        btn_headRightButton.setVisibility(View.VISIBLE);
-    }
 
     private void assignHeadViews(View view) {
         rel_contentArea = (RelativeLayout) view.findViewById(R.id.rel_base_contentArea);
         btn_backButton = (Button) view.findViewById(R.id.btn_base_head_back);
         btn_headTitle = (TextView) view.findViewById(R.id.tv_base_head_title);
         rel_headArea = (RelativeLayout) view.findViewById(R.id.rel_base_headArea);
-        btn_headRightButton = (Button) view.findViewById(R.id.btn_base_head_right);
         btn_backButton.setVisibility(View.GONE);
         btn_headTitle.setVisibility(View.GONE);
-        btn_headRightButton.setVisibility(View.GONE);
 
     }
 

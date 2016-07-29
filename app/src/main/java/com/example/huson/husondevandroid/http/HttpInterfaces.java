@@ -2,6 +2,7 @@ package com.example.huson.husondevandroid.http;
 
 
 import com.example.huson.husondevandroid.bean.BaseBean;
+import com.example.huson.husondevandroid.mvp.modle.MainModel;
 
 import org.json.JSONArray;
 
@@ -12,6 +13,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Streaming;
 import rx.Observable;
@@ -54,6 +56,15 @@ public class HttpInterfaces {
                                         @Field("accidentObj") JSONArray list);
     }
 
+    public interface LoadData{
+
+        //加载天气
+        @GET("adat/sk/{cityId}.html")
+        Observable<MainModel> loadData(@Path("cityId") String cityId);
+    }
+
+    //baseUrl
+    String API_SERVER_URL = "http://www.weather.com.cn/";
 
 
 }

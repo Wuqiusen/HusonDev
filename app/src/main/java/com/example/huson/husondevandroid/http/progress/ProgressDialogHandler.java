@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
 
-import com.zxzs.eastsafe.view.ProgressView;
+import com.example.huson.husondevandroid.view.ProgressView;
 
 
 /**

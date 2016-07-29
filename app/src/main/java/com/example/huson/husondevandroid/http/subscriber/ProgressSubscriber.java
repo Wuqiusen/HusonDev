@@ -2,10 +2,11 @@ package com.example.huson.husondevandroid.http.subscriber;
 
 import android.content.Context;
 
-import com.zxzs.eastsafe.http.progress.ProgressCancelListener;
-import com.zxzs.eastsafe.http.progress.ProgressDialogHandler;
-import com.zxzs.eastsafe.utils.DebugLog;
-import com.zxzs.eastsafe.utils.ToastHelper;
+
+import com.example.huson.husondevandroid.http.progress.ProgressCancelListener;
+import com.example.huson.husondevandroid.http.progress.ProgressDialogHandler;
+import com.example.huson.husondevandroid.utils.DebugLog;
+import com.example.huson.husondevandroid.utils.ToastHelper;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
