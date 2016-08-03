@@ -2,6 +2,7 @@ package com.example.huson.husondevandroid.http;
 
 
 import com.example.huson.husondevandroid.bean.BaseBean;
+import com.example.huson.husondevandroid.bean.GirlBean;
 import com.example.huson.husondevandroid.mvp.modle.MainModel;
 
 import org.json.JSONArray;
@@ -16,6 +17,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Streaming;
+import retrofit2.http.Url;
 import rx.Observable;
 
 /**
@@ -65,6 +67,17 @@ public class HttpInterfaces {
 
     //baseUrl
     String API_SERVER_URL = "http://www.weather.com.cn/";
+
+    public interface GirlsService {
+
+        @GET("api/data/{type}/{count}/{page}")
+        Observable<GirlBean> getGirls(
+                @Path("type") String type,
+                @Path("count") int count,
+                @Path("page") int page
+        );
+
+    }
 
 
 }

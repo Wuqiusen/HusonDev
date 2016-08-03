@@ -6,6 +6,7 @@ package com.example.huson.husondevandroid.bean;
  */
 public class BaseBean<T> {
     public int returnCode;
+    public int error;
     public int returnSize;
     public String returnInfo;
     public T returnData;

@@ -2,6 +2,7 @@ package com.example.huson.husondevandroid.http;
 
 
 import com.example.huson.husondevandroid.bean.BaseBean;
+import com.example.huson.husondevandroid.bean.GirlBean;
 import com.example.huson.husondevandroid.bean.WeatherinfoBean;
 import com.example.huson.husondevandroid.mvp.modle.MainModel;
 import com.example.huson.husondevandroid.utils.DebugLog;
@@ -28,7 +29,8 @@ import rx.schedulers.Schedulers;
  * 940762301@qq.com
  */
 public class HttpMethods {
-    public static final String BASE_URL = "http://192.168.0.70:8080/safety_app/";
+//    public static final String BASE_URL = "http://192.168.0.70:8080/safety_app/";
+    public static final String BASE_URL = "http://gank.io/";
     private static final int DEFAULT_TIMEOUT = 1;
     private Retrofit retrofit;
 
@@ -105,6 +107,13 @@ public class HttpMethods {
     public void loadData(Subscriber<WeatherinfoBean> subscriber, String city){
         HttpInterfaces.LoadData loadData = retrofit.create(HttpInterfaces.LoadData.class);
         Observable observable = loadData.loadData(city)
+                .map(new HttpResultFunc());
+        toSubscribe(observable, subscriber);
+    }
+
+    public void getGirls(Subscriber<GirlBean> subscriber, String type, int count, int page){
+        HttpInterfaces.GirlsService girlsService = retrofit.create(HttpInterfaces.GirlsService.class);
+        Observable observable = girlsService.getGirls(type, 0, 0)
                 .map(new HttpResultFunc());
         toSubscribe(observable, subscriber);
     }

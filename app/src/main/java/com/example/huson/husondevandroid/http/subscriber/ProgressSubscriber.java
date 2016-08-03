@@ -11,6 +11,7 @@ import com.example.huson.husondevandroid.utils.ToastHelper;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 
+import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 
 /**
@@ -24,6 +25,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
 
     private SubscriberOnNextListener mSubscriberOnNextListener;
     private ProgressDialogHandler mProgressDialogHandler;
+    private ApiCallback<T> apiCallback;
 
     private Context context;
 
@@ -31,6 +33,9 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
         this.mSubscriberOnNextListener = mSubscriberOnNextListener;
         this.context = context;
         mProgressDialogHandler = new ProgressDialogHandler(context, this, true);
+    }
+    public ProgressSubscriber(ApiCallback<T> apiCallback) {
+        this.apiCallback = apiCallback;
     }
 
     private void showProgressDialog(){
@@ -61,6 +66,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
     @Override
     public void onCompleted() {
         dismissProgressDialog();
+        apiCallback.onCompleted();
 //        ToastHelper.showToast("Get Top Movie Completed", context);
     }
 
@@ -72,6 +78,20 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
     @Override
     public void onError(Throwable e) {
         DebugLog.e("00000000000000000000");
+        if (e instanceof HttpException) {
+            HttpException httpException = (HttpException) e;
+            //httpException.response().errorBody().string()
+            int code = httpException.code();
+            String msg = httpException.getMessage();
+            if (code == 504) {
+                msg = "网络不给力";
+            }
+            apiCallback.onFailure(code, msg);
+        } else {
+            apiCallback.onFailure(0, e.getMessage());
+        }
+
+        apiCallback.onCompleted();
         if (e instanceof SocketTimeoutException) {
             ToastHelper.showToast("网络中断，请检查您的网络状态", context);
         } else if (e instanceof ConnectException) {
@@ -93,6 +113,7 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
     public void onNext(T t) {
         if (mSubscriberOnNextListener != null) {
             mSubscriberOnNextListener.onNext(t);
+            apiCallback.onSuccess(t);
         }
     }
 

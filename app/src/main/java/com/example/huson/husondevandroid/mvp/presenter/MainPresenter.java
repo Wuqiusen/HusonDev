@@ -21,7 +21,7 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
 
-    public void loadData(String cityId) {
+    public void loadData(int page, int size) {
     }
 
 }

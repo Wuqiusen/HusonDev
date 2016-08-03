@@ -10,7 +10,9 @@
     tools:context=".ui.activity.MainActivity">
 
     <Button
+        android:id="@+id/btn_pretty_girls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="PrettyGirls" />
+
 </RelativeLayout>
