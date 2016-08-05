@@ -260,6 +260,10 @@ public class MyDialog extends AlertDialog {
             ToastHelper.showToast("当前网络状态不良,请稍后重试", backactivity);
         }
     }
+    public void setProgress(int progress){
+        dialog_progressbar.setProgress(progress);
+        tv_percent.setText(String.valueOf(progress) + "%");
+    }
 
     public void ButtonCancel(View.OnClickListener listener) {
         if (listener == null)

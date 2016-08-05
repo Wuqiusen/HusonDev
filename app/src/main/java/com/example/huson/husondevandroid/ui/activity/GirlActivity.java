@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.example.huson.husondevandroid.R;
+import com.example.huson.husondevandroid.adapter.GirlDetailsAdapter;
 import com.example.huson.husondevandroid.adapter.GirlsAdapter;
 import com.example.huson.husondevandroid.bean.GirlBean;
 import com.example.huson.husondevandroid.mvp.base.MvpActivity;
@@ -99,10 +100,10 @@ public class GirlActivity extends MvpActivity<GirlPresenter> implements GirlView
         mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-//                Intent intent = new Intent(mActivity, GirlActivity.class);
-//                intent.putExtra("girls", (Serializable)data);
-//                intent.putExtra("current", position);
-//                startActivity(intent);
+                Intent intent = new Intent(mActivity, GirlDetailsActivity.class);
+                intent.putExtra("girls", (Serializable)data);
+                intent.putExtra("poi", position);
+                startActivity(intent);
             }
         });
 

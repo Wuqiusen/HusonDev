@@ -113,8 +113,8 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
     public void onNext(T t) {
         if (mSubscriberOnNextListener != null) {
             mSubscriberOnNextListener.onNext(t);
-            apiCallback.onSuccess(t);
         }
+        apiCallback.onSuccess(t);
     }
 
     /**

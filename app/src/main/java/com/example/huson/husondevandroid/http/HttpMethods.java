@@ -10,6 +10,7 @@ import com.example.huson.husondevandroid.utils.DebugLog;
 import org.json.JSONArray;
 
 import java.io.File;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -73,10 +74,10 @@ public class HttpMethods {
 
         @Override
         public T call(BaseBean<T> httpResult) {
-            if (httpResult.returnCode == 505) {
-                DebugLog.w(httpResult.returnInfo);
-                throw new ApiException(httpResult.returnInfo);
-            }
+//            if (httpResult.returnCode == 505) {
+//                DebugLog.w(httpResult.returnInfo);
+//                throw new ApiException(httpResult.returnInfo);
+//            }
             return httpResult.returnData;
         }
     }
@@ -111,10 +112,16 @@ public class HttpMethods {
         toSubscribe(observable, subscriber);
     }
 
-    public void getGirls(Subscriber<GirlBean> subscriber, String type, int count, int page){
+    public void getGirls(Subscriber<List<GirlBean.ResultsEntity>> subscriber, String type, int count, int page){
         HttpInterfaces.GirlsService girlsService = retrofit.create(HttpInterfaces.GirlsService.class);
-        Observable observable = girlsService.getGirls(type, 0, 0)
-                .map(new HttpResultFunc());
+        Observable observable = girlsService.getGirls(type, count, page)
+                .map(new Func1<GirlBean, List<GirlBean.ResultsEntity>>() {
+                    @Override
+                    public List<GirlBean.ResultsEntity> call(GirlBean girlBean) {
+                        return girlBean.results;
+                    }
+
+                });
         toSubscribe(observable, subscriber);
     }
 

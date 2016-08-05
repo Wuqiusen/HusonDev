@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class GirlBean{
     public List<ResultsEntity> results;
+    public boolean error;
 
     public static class ResultsEntity implements Serializable {
         public String _id;

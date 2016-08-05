@@ -8,6 +8,8 @@ import com.example.huson.husondevandroid.mvp.base.BasePresenter;
 import com.example.huson.husondevandroid.mvp.view.GirlView;
 import com.example.huson.husondevandroid.mvp.view.MainView;
 
+import java.util.List;
+
 import rx.Subscriber;
 
 /**
@@ -23,13 +25,13 @@ public class GirlPresenter extends BasePresenter<GirlView> {
 
 
     public void loadData(int count, int page, final boolean isLoad) {
-        HttpMethods.getInstance().getGirls(new ProgressSubscriber<GirlBean>(new ApiCallback<GirlBean>() {
+        HttpMethods.getInstance().getGirls(new ProgressSubscriber<List<GirlBean.ResultsEntity>>(new ApiCallback<List<GirlBean.ResultsEntity>>() {
             @Override
-            public void onSuccess(GirlBean model) {
+            public void onSuccess(List<GirlBean.ResultsEntity> model) {
                 if (isLoad){
-                    mvpView.load(model.results);
+                    mvpView.load(model);
                 }else {
-                    mvpView.refresh(model.results);
+                    mvpView.refresh(model);
                 }
 //                mvpView.getDataSuccess(model.results);
             }
