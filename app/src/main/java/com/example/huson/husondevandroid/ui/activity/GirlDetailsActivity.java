@@ -37,6 +37,7 @@ public class GirlDetailsActivity extends MvpActivity<GirlDetailsPresenter> imple
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_girl);
         ButterKnife.bind(this);
+        mvpPresenter.loadData(GirlDetailsActivity.this);
     }
 
 
