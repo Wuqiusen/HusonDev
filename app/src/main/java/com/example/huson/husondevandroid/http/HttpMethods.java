@@ -4,12 +4,10 @@ package com.example.huson.husondevandroid.http;
 import com.example.huson.husondevandroid.bean.BaseBean;
 import com.example.huson.husondevandroid.bean.GirlBean;
 import com.example.huson.husondevandroid.bean.WeatherinfoBean;
-import com.example.huson.husondevandroid.mvp.modle.MainModel;
-import com.example.huson.husondevandroid.utils.DebugLog;
+import com.example.mylibrary.utils.DebugLog;
 
 import org.json.JSONArray;
 
-import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 

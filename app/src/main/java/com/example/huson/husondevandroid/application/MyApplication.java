@@ -3,15 +3,12 @@ package com.example.huson.husondevandroid.application;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
-import android.provider.SyncStateContract;
-import android.text.TextUtils;
 
-import com.example.huson.husondevandroid.sharepreference.SharedPreferencesHelper;
-import com.example.huson.husondevandroid.utils.DebugLog;
+import com.example.mylibrary.utils.SharedPreferencesHelper;
+import com.example.mylibrary.utils.DebugLog;
 
 import java.io.File;
 import java.io.FileNotFoundException;

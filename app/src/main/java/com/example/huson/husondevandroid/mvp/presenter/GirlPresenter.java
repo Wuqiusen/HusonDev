@@ -2,15 +2,12 @@ package com.example.huson.husondevandroid.mvp.presenter;
 
 import com.example.huson.husondevandroid.bean.GirlBean;
 import com.example.huson.husondevandroid.http.HttpMethods;
-import com.example.huson.husondevandroid.http.subscriber.ApiCallback;
-import com.example.huson.husondevandroid.http.subscriber.ProgressSubscriber;
-import com.example.huson.husondevandroid.mvp.base.BasePresenter;
+import com.example.mylibrary.http.subscriber.ApiCallback;
+import com.example.mylibrary.http.subscriber.ProgressSubscriber;
+import com.example.mylibrary.base.BasePresenter;
 import com.example.huson.husondevandroid.mvp.view.GirlView;
-import com.example.huson.husondevandroid.mvp.view.MainView;
 
 import java.util.List;
-
-import rx.Subscriber;
 
 /**
  * 当前类注析：

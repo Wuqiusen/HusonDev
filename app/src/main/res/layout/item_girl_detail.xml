@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <com.example.huson.husondevandroid.view.PinchImageView
+    <com.example.mylibrary.view.PinchImageView
         android:id="@+id/img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -9,9 +9,8 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.example.huson.husondevandroid.R;
 import com.example.huson.husondevandroid.bean.GirlBean;
-import com.example.huson.husondevandroid.view.PinchImageView;
+import com.example.mylibrary.view.PinchImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

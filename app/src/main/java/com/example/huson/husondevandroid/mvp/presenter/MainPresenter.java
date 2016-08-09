@@ -1,12 +1,6 @@
 package com.example.huson.husondevandroid.mvp.presenter;
 
-import com.example.huson.husondevandroid.bean.WeatherinfoBean;
-import com.example.huson.husondevandroid.http.HttpInterfaces;
-import com.example.huson.husondevandroid.http.HttpMethods;
-import com.example.huson.husondevandroid.http.subscriber.ProgressSubscriber;
-import com.example.huson.husondevandroid.http.subscriber.SubscriberOnNextListener;
-import com.example.huson.husondevandroid.mvp.base.BasePresenter;
-import com.example.huson.husondevandroid.mvp.modle.MainModel;
+import com.example.mylibrary.base.BasePresenter;
 import com.example.huson.husondevandroid.mvp.view.MainView;
 
 /**

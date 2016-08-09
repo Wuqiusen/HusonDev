@@ -3,9 +3,8 @@ package com.example.huson.husondevandroid.mvp.presenter;
 import android.app.Activity;
 
 import com.example.huson.husondevandroid.bean.GirlBean;
-import com.example.huson.husondevandroid.mvp.base.BasePresenter;
+import com.example.mylibrary.base.BasePresenter;
 import com.example.huson.husondevandroid.mvp.view.GirlDetailsView;
-import com.example.huson.husondevandroid.mvp.view.GirlView;
 
 import java.util.List;
 

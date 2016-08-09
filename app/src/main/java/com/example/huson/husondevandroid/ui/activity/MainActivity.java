@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.huson.husondevandroid.R;
-import com.example.huson.husondevandroid.mvp.base.MvpActivity;
+import com.example.mylibrary.base.MvpActivity;
 import com.example.huson.husondevandroid.mvp.modle.MainModel;
 import com.example.huson.husondevandroid.mvp.presenter.MainPresenter;
 import com.example.huson.husondevandroid.mvp.view.MainView;

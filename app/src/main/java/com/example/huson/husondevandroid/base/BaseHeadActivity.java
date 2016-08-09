@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.huson.husondevandroid.R;
-import com.example.huson.husondevandroid.utils.ToastHelper;
+import com.example.mylibrary.utils.ToastHelper;
 
 
 public abstract class BaseHeadActivity extends BaseActivity {

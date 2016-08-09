@@ -8,10 +8,10 @@ import android.widget.LinearLayout;
 import com.example.huson.husondevandroid.R;
 import com.example.huson.husondevandroid.adapter.GirlDetailsAdapter;
 import com.example.huson.husondevandroid.bean.GirlBean;
-import com.example.huson.husondevandroid.mvp.base.MvpActivity;
+import com.example.mylibrary.base.MvpActivity;
 import com.example.huson.husondevandroid.mvp.presenter.GirlDetailsPresenter;
 import com.example.huson.husondevandroid.mvp.view.GirlDetailsView;
-import com.example.huson.husondevandroid.view.PinchImageView;
+import com.example.mylibrary.view.PinchImageView;
 
 import java.util.List;
 
@@ -37,6 +37,7 @@ public class GirlDetailsActivity extends MvpActivity<GirlDetailsPresenter> imple
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_girl);
         ButterKnife.bind(this);
+        mvpPresenter.loadData(GirlDetailsActivity.this);
     }
 
 

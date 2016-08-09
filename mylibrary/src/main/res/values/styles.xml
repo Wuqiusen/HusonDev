@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 应用程序样式-->
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--EditText-->
+    <!-- 自定义EditText -->
+    <style name="edit_basic_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/btn_height</item>
+        <item name="android:text">@null</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:textColor">@color/tv_gray_color</item>
+        <item name="android:padding">6dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textCursorDrawable">@drawable/color_cursor</item>
+        <item name="android:background">@drawable/edt_login_bg_style</item>
+    </style>
+    <style name="editText_style">
+        <item name="android:textSize">@dimen/font_min_size</item>
+        <item name="android:textColor">@color/tv_gray_color</item>
+        <item name="android:paddingLeft">@dimen/margin_fit_10</item>
+        <item name="android:background">@drawable/edt_login_bg_style</item>
+    </style>
+    <!--EditText 普通字符输入-->
+    <style name="edit_text_style" parent="edit_basic_style">
+        <item name="android:inputType">text</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+</resources>

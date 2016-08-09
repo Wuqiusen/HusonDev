@@ -1,12 +1,11 @@
 package com.example.huson.husondevandroid.base;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 
-import com.example.huson.husondevandroid.utils.ClickUtil;
-import com.example.huson.husondevandroid.utils.DebugLog;
+import com.example.mylibrary.utils.ClickUtil;
+import com.example.mylibrary.utils.DebugLog;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
