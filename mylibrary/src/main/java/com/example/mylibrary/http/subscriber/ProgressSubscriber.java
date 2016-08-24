@@ -90,8 +90,8 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
         } else {
             apiCallback.onFailure(0, e.getMessage());
         }
-
         apiCallback.onCompleted();
+
         if (e instanceof SocketTimeoutException) {
             ToastHelper.showToast("网络中断，请检查您的网络状态", context);
         } else if (e instanceof ConnectException) {

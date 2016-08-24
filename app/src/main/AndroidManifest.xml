@@ -11,14 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.activity.MainActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".ui.activity.GirlActivity"/>
+        <activity android:name=".ui.activity.GirlDetailsActivity"/>
+        <activity android:name=".ui.fragment.guide.ViewPagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.activity.GirlActivity"/>
-        <activity android:name=".ui.activity.GirlDetailsActivity"/>
+            </activity>
     </application>
 
 </manifest>
