@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.ViewGroup;
 
 import com.example.huson.husondevandroid.bean.GirlBean;
-import com.jude.easyrecyclerview.adapter.BaseViewHolder;
-import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.example.mylibrary.adapter.recycler.BaseViewHolder;
+import com.example.mylibrary.adapter.recycler.RecyclerArrayAdapter;
+//import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+//import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 
 /**

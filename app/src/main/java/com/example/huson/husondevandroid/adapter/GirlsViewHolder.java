@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.huson.husondevandroid.R;
 import com.example.huson.husondevandroid.bean.GirlBean;
-import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.example.mylibrary.adapter.recycler.BaseViewHolder;
 
 
 /**

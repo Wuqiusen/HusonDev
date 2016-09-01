@@ -10,13 +10,13 @@ import android.widget.LinearLayout;
 import com.example.huson.husondevandroid.R;
 import com.example.huson.husondevandroid.adapter.GirlsAdapter;
 import com.example.huson.husondevandroid.bean.GirlBean;
+import com.example.mylibrary.adapter.recycler.RecyclerArrayAdapter;
 import com.example.mylibrary.base.MvpActivity;
 import com.example.huson.husondevandroid.mvp.presenter.GirlPresenter;
 import com.example.huson.husondevandroid.mvp.view.GirlView;
 import com.example.mylibrary.utils.DebugLog;
 import com.example.mylibrary.utils.ToastHelper;
-import com.jude.easyrecyclerview.EasyRecyclerView;
-import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.example.mylibrary.widget.EasyRecycleView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class GirlActivity extends MvpActivity<GirlPresenter> implements GirlView
         RecyclerArrayAdapter.OnLoadMoreListener, SwipeRefreshLayout.OnRefreshListener{
 
     @Bind(R.id.girls_recycler_view)
-    EasyRecyclerView girlsRecyclerView;
+    EasyRecycleView girlsRecyclerView;
     @Bind(R.id.girls_fragment)
     FrameLayout girlsFragment;
     @Bind(R.id.swiperefreshlayout)
