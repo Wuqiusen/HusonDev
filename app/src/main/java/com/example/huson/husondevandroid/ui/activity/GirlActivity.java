@@ -50,7 +50,7 @@ public class GirlActivity extends MvpActivity<GirlPresenter> implements GirlView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_girl_main);
+        setContentView(R.layout.content_girl);
         ButterKnife.bind(this);
         initRecyclerView();
         mvpPresenter.loadData(20, 1, false);
@@ -109,9 +109,9 @@ public class GirlActivity extends MvpActivity<GirlPresenter> implements GirlView
         girlsRecyclerView.setRefreshListener(this);
     }
 
-    @OnClick(R.id.fab)
-    public void onClick() {
-    }
+//    @OnClick(R.id.fab)
+//    public void onClick() {
+//    }
 
     @Override
     public void onLoadMore() {

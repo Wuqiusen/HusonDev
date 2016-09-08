@@ -14,7 +14,6 @@ package com.example.mylibrary.adapter.recycler;
  */
 
 import android.content.Context;
-import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -37,7 +36,7 @@ abstract public class BaseViewHolder<M> extends RecyclerView.ViewHolder {
     public void setData(M data) {
     }
 
-    protected <T extends View> T $(@IdRes int id) {
+    protected <T extends View> T $(int id) {
         return (T) itemView.findViewById(id);
     }
 
