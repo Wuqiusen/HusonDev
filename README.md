@@ -14,7 +14,7 @@
 ####Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.Wuqiusen:HusonDev:v1.0.4'
+	         compile 'com.github.Wuqiusen:HusonDev:v1.0.5'
 	}
 
 ##关于项目
