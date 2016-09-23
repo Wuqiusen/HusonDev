@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.mylibrary.R;
 
-import butterknife.ButterKnife;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;

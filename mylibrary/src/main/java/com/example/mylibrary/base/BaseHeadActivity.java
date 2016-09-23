@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.mylibrary.R;
 
-import butterknife.ButterKnife;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -38,7 +37,6 @@ public class BaseHeadActivity extends AppCompatActivity {
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
-        ButterKnife.bind(this);
         mActivity = this;
     }
 
@@ -46,14 +44,12 @@ public class BaseHeadActivity extends AppCompatActivity {
     @Override
     public void setContentView(View view) {
         super.setContentView(view);
-        ButterKnife.bind(this);
         mActivity = this;
     }
 
     @Override
     public void setContentView(View view, ViewGroup.LayoutParams params) {
         super.setContentView(view, params);
-        ButterKnife.bind(this);
         mActivity = this;
 
     }

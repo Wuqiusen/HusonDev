@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.mylibrary.R;
 
-import butterknife.ButterKnife;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
