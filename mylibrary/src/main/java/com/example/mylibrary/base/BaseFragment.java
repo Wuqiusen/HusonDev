@@ -26,7 +26,6 @@ public class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
         mActivity = getActivity();
     }
 
@@ -63,9 +62,9 @@ public class BaseFragment extends Fragment {
     }
 
     public void addSubscription(Subscription subscription) {
-//        if (mCompositeSubscription == null) {
+        if (mCompositeSubscription == null) {
         mCompositeSubscription = new CompositeSubscription();
-//        }
+        }
         mCompositeSubscription.add(subscription);
     }
 }

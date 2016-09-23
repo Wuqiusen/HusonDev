@@ -19,6 +19,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        initToolBar("美女");
 //        mvpPresenter.loadData();
     }
 

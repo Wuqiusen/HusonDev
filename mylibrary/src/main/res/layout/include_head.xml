@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_base_headArea"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="?colorPrimary"
+        android:minHeight="?actionBarSize">
+
+
+
+    <Button
+        android:id="@+id/btn_base_head_back_btn"
+        android:layout_width="wrap_content"
+        android:minWidth="@dimen/base_head"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:text=""
+        android:textSize="@dimen/font_medium"
+        android:paddingLeft="16dp"
+        android:paddingRight="8dp"
+        android:drawablePadding="4dp"
+        android:textColor="@color/white"
+        android:visibility="gone"/>
+
+    <ImageButton
+        android:id="@+id/btn_base_head_left_imgbutton"
+        android:layout_width="wrap_content"
+        android:minWidth="@dimen/base_head"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_base_head_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/app_name"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textSize="@dimen/font_huge"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_base_head_right_button"
+        android:layout_width="wrap_content"
+        android:minWidth="48dp"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/font_medium"
+        android:textColor="@color/white"
+        android:text="编辑"
+        android:paddingRight="@dimen/margin_small"
+        android:paddingLeft="@dimen/margin_small"
+        android:background="@color/transparent"
+        android:layout_alignParentRight="true"
+        />
+
+
+    <ImageButton
+        android:id="@+id/btn_base_head_right_imgbutton"
+        android:layout_width="wrap_content"
+        android:minWidth="@dimen/base_head"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:paddingRight="@dimen/margin_small"
+        android:layout_alignParentRight="true"
+        android:visibility="gone" />
+    <View
+        android:id="@+id/head_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.2px"
+        android:background="@color/background_gray"
+        android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+    <!-- 页面主内容 -->
+    <RelativeLayout
+        android:id="@+id/rel_base_contentArea"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </RelativeLayout>
+</LinearLayout>
+
