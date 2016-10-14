@@ -22,7 +22,7 @@ import com.example.mylibrary.adapter.recycler.RecyclerArrayAdapter;
  * Created by huson on 2016/8/26.
  * 940762301@qq.com
  */
-public class EasyRecycleView extends FrameLayout {
+public class EasyRecyclerView extends FrameLayout {
     public static final String TAG = "EasyRecyclerView";
     public static boolean DEBUG = false;
     protected RecyclerView mRecycler;
@@ -40,8 +40,7 @@ public class EasyRecycleView extends FrameLayout {
     protected int mPaddingLeft;
     protected int mPaddingRight;
     protected int mScrollbarStyle;
-
-
+    protected int mScrollbar;
 
     protected RecyclerView.OnScrollListener mInternalOnScrollListener;
     protected RecyclerView.OnScrollListener mExternalOnScrollListener;
@@ -58,18 +57,18 @@ public class EasyRecycleView extends FrameLayout {
         return mRecycler;
     }
 
-    public EasyRecycleView(Context context) {
+    public EasyRecyclerView(Context context) {
         super(context);
         initView();
     }
 
-    public EasyRecycleView(Context context, AttributeSet attrs) {
+    public EasyRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttrs(attrs);
         initView();
     }
 
-    public EasyRecycleView(Context context, AttributeSet attrs, int defStyle) {
+    public EasyRecyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         initAttrs(attrs);
         initView();
@@ -85,6 +84,7 @@ public class EasyRecycleView extends FrameLayout {
             mPaddingLeft = (int) a.getDimension(R.styleable.superrecyclerview_recyclerPaddingLeft, 0.0f);
             mPaddingRight = (int) a.getDimension(R.styleable.superrecyclerview_recyclerPaddingRight, 0.0f);
             mScrollbarStyle = a.getInteger(R.styleable.superrecyclerview_scrollbarStyle, -1);
+            mScrollbar = a.getInteger(R.styleable.superrecyclerview_scrollbars, -1);
 
             mEmptyId = a.getResourceId(R.styleable.superrecyclerview_layout_empty, 0);
             mProgressId = a.getResourceId(R.styleable.superrecyclerview_layout_progress, 0);
@@ -117,6 +117,13 @@ public class EasyRecycleView extends FrameLayout {
         return mPtrLayout.dispatchTouchEvent(ev);
     }
 
+    /**
+     *
+     * @param left
+     * @param top
+     * @param right
+     * @param bottom
+     */
     public void setRecyclerPadding(int left,int top,int right,int bottom){
         this.mPaddingLeft = left;
         this.mPaddingTop = top;
@@ -124,6 +131,11 @@ public class EasyRecycleView extends FrameLayout {
         this.mPaddingBottom = bottom;
         mRecycler.setPadding(mPaddingLeft, mPaddingTop, mPaddingRight, mPaddingBottom);
     }
+
+    public void setClipToPadding(boolean isClip){
+        mRecycler.setClipToPadding(isClip);
+    }
+
 
     public void setEmptyView(View emptyView){
         mEmptyView.removeAllViews();
@@ -191,9 +203,26 @@ public class EasyRecycleView extends FrameLayout {
             if (mScrollbarStyle != -1) {
                 mRecycler.setScrollBarStyle(mScrollbarStyle);
             }
+            switch (mScrollbar){
+                case 0:setVerticalScrollBarEnabled(false);break;
+                case 1:setHorizontalScrollBarEnabled(false);break;
+                case 2:
+                    setVerticalScrollBarEnabled(false);
+                    setHorizontalScrollBarEnabled(false);
+                    break;
+            }
         }
     }
 
+    @Override
+    public void setVerticalScrollBarEnabled(boolean verticalScrollBarEnabled) {
+        mRecycler.setVerticalScrollBarEnabled(verticalScrollBarEnabled);
+    }
+
+    @Override
+    public void setHorizontalScrollBarEnabled(boolean horizontalScrollBarEnabled) {
+        mRecycler.setHorizontalScrollBarEnabled(horizontalScrollBarEnabled);
+    }
 
     /**
      * Set the layout manager to the recycler
@@ -206,9 +235,9 @@ public class EasyRecycleView extends FrameLayout {
 
 
     public static class EasyDataObserver extends RecyclerView.AdapterDataObserver {
-        private EasyRecycleView recyclerView;
+        private EasyRecyclerView recyclerView;
 
-        public EasyDataObserver(EasyRecycleView recyclerView) {
+        public EasyDataObserver(EasyRecyclerView recyclerView) {
             this.recyclerView = recyclerView;
         }
 
@@ -493,4 +522,3 @@ public class EasyRecycleView extends FrameLayout {
     }
 
 }
-

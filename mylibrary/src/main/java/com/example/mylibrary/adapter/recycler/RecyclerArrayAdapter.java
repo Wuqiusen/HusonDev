@@ -1,7 +1,40 @@
+/*
+ * Copyright (C) 2006 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.example.mylibrary.adapter.recycler;
 
+import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+
+
+import com.example.mylibrary.widget.EasyRecyclerView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 /**
- * 当前类注析：
  * A concrete BaseAdapter that is backed by an array of arbitrary
  * objects.  By default this class expects that the provided resource id references
  * a single TextView.  If you want to use a more complex layout, use the constructors that
@@ -14,31 +47,7 @@ package com.example.mylibrary.adapter.recycler;
  *
  * <p>To use something other than TextViews for the array display, for instance, ImageViews,
  * or to have some of data besides toString() results fill the views,
- *
- * Created by huson on 2016/8/26.
- * 940762301@qq.com
  */
-
-import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-
-import com.example.mylibrary.widget.EasyRecycleView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-
 abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseViewHolder>   {
     /**
      * Contains the list of objects that represent the data of this ArrayAdapter.
@@ -60,6 +69,18 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
     }
     public interface OnLoadMoreListener{
         void onLoadMore();
+    }
+    public interface OnMoreListener{
+        void onMoreShow();
+        void onMoreClick();
+    }
+    public interface OnNoMoreListener{
+        void onNoMoreShow();
+        void onNoMoreClick();
+    }
+    public interface OnErrorListener{
+        void onErrorShow();
+        void onErrorClick();
     }
 
     public class GridSpanSizeLookup extends GridLayoutManager.SpanSizeLookup{
@@ -158,7 +179,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
     public void addHeader(ItemView view){
         if (view==null)throw new NullPointerException("ItemView can't be null");
         headers.add(view);
-        notifyItemInserted(footers.size()-1);
+        notifyItemInserted(headers.size()-1);
     }
 
     public void addFooter(ItemView view){
@@ -209,49 +230,84 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         return mEventDelegate;
     }
 
-    public View setMore(final int res, final OnLoadMoreListener listener){
-        FrameLayout container = new FrameLayout(getContext());
-        container.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        LayoutInflater.from(getContext()).inflate(res, container);
-        getEventDelegate().setMore(container, listener);
-        return container;
+    /**
+     * @deprecated Use {@link #setMore(int, OnLoadMoreListener)} instead.
+     */
+    @Deprecated
+    public void setMore(final int res, final OnLoadMoreListener listener){
+        getEventDelegate().setMore(res, new OnMoreListener() {
+            @Override
+            public void onMoreShow() {
+                listener.onLoadMore();
+            }
+
+            @Override
+            public void onMoreClick() {
+
+            }
+        });
+    }
+    /**
+     * @deprecated Use {@link #setMore(View, OnLoadMoreListener)} instead.
+     */
+    public void setMore(final View view,final OnLoadMoreListener listener){
+        getEventDelegate().setMore(view, new OnMoreListener() {
+            @Override
+            public void onMoreShow() {
+                listener.onLoadMore();
+            }
+
+            @Override
+            public void onMoreClick() {
+
+            }
+        });
     }
 
-    public View setMore(final View view,OnLoadMoreListener listener){
+    public void setMore(final int res, final OnMoreListener listener){
+        getEventDelegate().setMore(res, listener);
+    }
+
+    public void setMore(final View view,OnMoreListener listener){
         getEventDelegate().setMore(view, listener);
-        return view;
     }
 
-    public View setNoMore(final int res) {
-        FrameLayout container = new FrameLayout(getContext());
-        container.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        LayoutInflater.from(getContext()).inflate(res, container);
-        getEventDelegate().setNoMore(container);
-        return container;
+    public void setNoMore(final int res) {
+        getEventDelegate().setNoMore(res,null);
     }
 
-    public View setNoMore(final View view) {
-        getEventDelegate().setNoMore(view);
-        return view;
+    public void setNoMore(final View view) {
+        getEventDelegate().setNoMore(view,null);
     }
 
-    public View setError(final int res) {
-        FrameLayout container = new FrameLayout(getContext());
-        container.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        LayoutInflater.from(getContext()).inflate(res, container);
-        getEventDelegate().setErrorMore(container);
-        return container;
+    public void setNoMore(final View view,OnNoMoreListener listener) {
+        getEventDelegate().setNoMore(view,listener);
     }
 
-    public View setError(final View view) {
-        getEventDelegate().setErrorMore(view);
-        return view;
+    public void setNoMore(final int res,OnNoMoreListener listener) {
+        getEventDelegate().setNoMore(res,listener);
     }
 
+
+    public void setError(final int res) {
+        getEventDelegate().setErrorMore(res,null);
+    }
+
+    public void setError(final View view) {
+        getEventDelegate().setErrorMore(view,null);
+    }
+
+    public void setError(final int res,OnErrorListener listener) {
+        getEventDelegate().setErrorMore(res,listener);
+    }
+
+    public void setError(final View view,OnErrorListener listener) {
+        getEventDelegate().setErrorMore(view,listener);
+    }
 
     @Override
     public void registerAdapterDataObserver(RecyclerView.AdapterDataObserver observer) {
-        if (observer instanceof EasyRecycleView.EasyDataObserver){
+        if (observer instanceof EasyRecyclerView.EasyDataObserver){
             mObserver = observer;
         }else {
             super.registerAdapterDataObserver(observer);
@@ -523,7 +579,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
             viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    return mItemLongClickListener.onItemClick(viewHolder.getAdapterPosition()-headers.size());
+                    return mItemLongClickListener.onItemLongClick(viewHolder.getAdapterPosition()-headers.size());
                 }
             });
         }
@@ -627,7 +683,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
     }
 
     public interface OnItemLongClickListener {
-        boolean onItemClick(int position);
+        boolean onItemLongClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){
@@ -639,9 +695,8 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
     }
 
     private static void log(String content){
-        if (EasyRecycleView.DEBUG){
-            Log.i(EasyRecycleView.TAG,content);
+        if (EasyRecyclerView.DEBUG){
+            Log.i(EasyRecyclerView.TAG,content);
         }
     }
 }
-

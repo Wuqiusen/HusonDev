@@ -14,6 +14,7 @@ package com.example.mylibrary.adapter.recycler;
  */
 
 import android.content.Context;
+import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
+ *
  * 在一些特殊情况下，只能在setData里设置监听。
  * @param <M>
  */
@@ -36,7 +38,7 @@ abstract public class BaseViewHolder<M> extends RecyclerView.ViewHolder {
     public void setData(M data) {
     }
 
-    protected <T extends View> T $(int id) {
+    protected <T extends View> T $(@IdRes int id) {
         return (T) itemView.findViewById(id);
     }
 

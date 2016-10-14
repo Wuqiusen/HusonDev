@@ -16,7 +16,7 @@ import com.example.huson.husondevandroid.mvp.presenter.GirlPresenter;
 import com.example.huson.husondevandroid.mvp.view.GirlView;
 import com.example.mylibrary.utils.DebugLog;
 import com.example.mylibrary.utils.ToastHelper;
-import com.example.mylibrary.widget.EasyRecycleView;
+import com.example.mylibrary.widget.EasyRecyclerView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,7 +24,6 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * 当前类注析：
@@ -35,7 +34,7 @@ public class GirlActivity extends MvpActivity<GirlPresenter> implements GirlView
         RecyclerArrayAdapter.OnLoadMoreListener, SwipeRefreshLayout.OnRefreshListener{
 
     @Bind(R.id.girls_recycler_view)
-    EasyRecycleView girlsRecyclerView;
+    EasyRecyclerView girlsRecyclerView;
     @Bind(R.id.girls_fragment)
     FrameLayout girlsFragment;
     @Bind(R.id.swiperefreshlayout)
@@ -90,7 +89,6 @@ public class GirlActivity extends MvpActivity<GirlPresenter> implements GirlView
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         girlsRecyclerView.setLayoutManager(staggeredGridLayoutManager);
         mAdapter = new GirlsAdapter(this);
-
         girlsRecyclerView.setAdapterWithProgress(mAdapter);
 
         mAdapter.setMore(R.layout.load_more_layout, this);

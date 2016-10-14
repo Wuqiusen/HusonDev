@@ -21,6 +21,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
         ButterKnife.bind(this);
         initToolBar("美女");
 //        mvpPresenter.loadData();
+        initToolBar("PRETTY");
     }
 
     @Override
