@@ -133,6 +133,10 @@ public class DefaultEventDelegate implements EventDelegate {
         this.footer.setMoreView(view);
         this.onMoreListener = listener;
         hasMore = true;
+        // 为了处理setMore之前就添加了数据的情况
+        if (adapter.getCount()>0){
+            addData(adapter.getCount());
+        }
         log("setMore");
     }
 
@@ -157,6 +161,10 @@ public class DefaultEventDelegate implements EventDelegate {
         this.footer.setMoreViewRes(res);
         this.onMoreListener = listener;
         hasMore = true;
+        // 为了处理setMore之前就添加了数据的情况
+        if (adapter.getCount()>0){
+            addData(adapter.getCount());
+        }
         log("setMore");
     }
 
@@ -334,4 +342,3 @@ public class DefaultEventDelegate implements EventDelegate {
         }
     }
 }
-

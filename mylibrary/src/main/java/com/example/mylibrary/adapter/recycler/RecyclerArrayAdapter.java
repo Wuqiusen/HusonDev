@@ -447,8 +447,11 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
 
     /**
      * 触发清空
+     * 与{@link #clear()}的不同仅在于这个使用notifyItemRangeRemoved.
+     * 猜测这个方法与add伪并发执行的时候会造成"Scrapped or attached views may not be recycled"的Crash.
+     * 所以建议使用{@link #clear()}
      */
-    public void clear() {
+    public void removeAll() {
         int count = mObjects.size();
         if (mEventDelegate!=null)mEventDelegate.clear();
         synchronized (mLock) {
@@ -459,6 +462,19 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         log("clear notifyItemRangeRemoved "+(headers.size())+","+(count));
     }
 
+    /**
+     * 触发清空
+     */
+    public void clear() {
+        int count = mObjects.size();
+        if (mEventDelegate!=null)mEventDelegate.clear();
+        synchronized (mLock) {
+            mObjects.clear();
+        }
+        if (mObserver!=null)mObserver.onChanged();
+        if (mNotifyOnChange) notifyDataSetChanged();
+        log("clear notifyItemRangeRemoved "+(headers.size())+","+(count));
+    }
     /**
      * Sorts the content of this adapter using the specified comparator.
      *
@@ -671,7 +687,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         return position;
     }
 
-    private class StateViewHolder extends BaseViewHolder{
+    private class StateViewHolder extends BaseViewHolder {
 
         public StateViewHolder(View itemView) {
             super(itemView);
